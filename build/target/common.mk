@@ -39,3 +39,7 @@ include device/qcom/common/build/target/system.mk
 include device/qcom/common/build/target/vendor.mk
 
 include device/qcom/common/qcom_hardware.mk
+
+# Partition source order for Product/Build properties pickup.
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.product.property_source_order=odm,vendor,product,system_ext,system
