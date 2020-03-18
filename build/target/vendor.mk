@@ -13,6 +13,7 @@
 # limitations under the License.
 
 all_vendor_components := \
+	perf \
 	telephony
 
 target_vendor_components := $(filter $(all_vendor_components),$(TARGET_COMMON_QTI_COMPONENTS))
