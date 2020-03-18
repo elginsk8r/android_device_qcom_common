@@ -1,10 +1,10 @@
-# Copyright 2023 Paranoid Android
+# Copyright (C) 2021 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,14 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-all_system_components := \
-	perf \
-    telephony \
-    wfd
+# Boot Jars
+PRODUCT_BOOT_JARS += \
+    QPerformance \
+    UxPerformance
 
-target_system_components := $(filter $(all_system_components),$(TARGET_COMMON_QTI_COMPONENTS))
+# Packages
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@2.0 \
+    libavservices_minijail \
+    vendor.qti.hardware.qspa-V1-ndk
 
-# QTI Common Components
-$(foreach component,$(target_system_components),\
-	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/system/$(component)) \
-	$(eval include device/qcom/common/system/$(component)/qti-$(component).mk))
+# Get non-open-source specific aspects
+$(call inherit-product-if-exists, vendor/qcom/common/system/perf/perf-vendor.mk)
