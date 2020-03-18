@@ -1,4 +1,4 @@
-# Copyright 2023 Paranoid Android
+# Copyright (C) 2022 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,13 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-all_system_components := \
-    telephony \
-    wfd
+LOCAL_PATH := $(call my-dir)
 
-target_system_components := $(filter $(all_system_components),$(TARGET_COMMON_QTI_COMPONENTS))
+ifneq ($(filter $(LOCAL_PATH),$(PRODUCT_SOONG_NAMESPACES)),)
 
-# QTI Common Components
-$(foreach component,$(target_system_components),\
-	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/system/$(component)) \
-	$(eval include device/qcom/common/system/$(component)/qti-$(component).mk))
+include $(CLEAR_VARS)
+
+CNE_LIBRARIES := libvndfwk_detect_jni.qti.so
+
+CNE_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR_APPS)/CneApp/lib/arm64/,$(notdir $(CNE_LIBRARIES)))
+$(CNE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /vendor/lib64/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(CNE_SYMLINKS)
+
+endif

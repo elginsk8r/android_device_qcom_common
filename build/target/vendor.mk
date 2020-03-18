@@ -12,13 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-all_system_components := \
-    telephony \
-    wfd
+all_vendor_components := \
+	telephony
 
-target_system_components := $(filter $(all_system_components),$(TARGET_COMMON_QTI_COMPONENTS))
+target_vendor_components := $(filter $(all_vendor_components),$(TARGET_COMMON_QTI_COMPONENTS))
 
 # QTI Common Components
-$(foreach component,$(target_system_components),\
-	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/system/$(component)) \
-	$(eval include device/qcom/common/system/$(component)/qti-$(component).mk))
+$(foreach component,$(target_vendor_components),\
+	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/vendor/$(component)) \
+	$(eval include device/qcom/common/vendor/$(component)/qti-$(component).mk))
