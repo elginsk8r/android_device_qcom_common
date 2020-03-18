@@ -1,5 +1,4 @@
-#
-# Copyright 2020 Paranoid Android
+# Copyright 2023 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Components
-ifneq (,$(filter all, $(TARGET_COMMON_QTI_COMPONENTS)))
-TARGET_COMMON_QTI_COMPONENTS := \
-    wfd \
-    $(filter-out all,$(TARGET_COMMON_QTI_COMPONENTS))
-endif
-include device/qcom/common/build/target/system.mk
+all_system_components := \
+    wfd
+
+target_system_components := $(filter $(all_system_components),$(TARGET_COMMON_QTI_COMPONENTS))
+
+# QTI Common Components
+$(foreach component,$(target_system_components),\
+	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/system/$(component)) \
+	$(eval include device/qcom/common/system/$(component)/qti-$(component).mk))

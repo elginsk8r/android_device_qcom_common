@@ -1,5 +1,4 @@
-#
-# Copyright 2020 Paranoid Android
+# Copyright (C) 2020 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +11,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Components
-ifneq (,$(filter all, $(TARGET_COMMON_QTI_COMPONENTS)))
-TARGET_COMMON_QTI_COMPONENTS := \
-    wfd \
-    $(filter-out all,$(TARGET_COMMON_QTI_COMPONENTS))
+LOCAL_PATH := $(call my-dir)
+
+ifneq ($(filter $(LOCAL_PATH),$(PRODUCT_SOONG_NAMESPACES)),)
+
+include $(CLEAR_VARS)
+
+WFDSERVICE_LIBRARIES := libwfdnative.so
+
+WFDSERVICE_SYMLINKS := $(addprefix $(TARGET_OUT_SYSTEM_EXT_APPS_PRIVILEGED)/WfdService/lib/arm64/,$(notdir $(WFDSERVICE_LIBRARIES)))
+$(WFDSERVICE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/system_ext/lib64/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(WFDSERVICE_SYMLINKS)
+
 endif
-include device/qcom/common/build/target/system.mk
