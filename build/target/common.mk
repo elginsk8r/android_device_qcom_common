@@ -14,10 +14,14 @@
 # limitations under the License.
 #
 
+include device/qcom/common/qcom_hardware.mk
+
 # Components
 ifneq (,$(filter all, $(TARGET_COMMON_QTI_COMPONENTS)))
 TARGET_COMMON_QTI_COMPONENTS := \
+    telephony \
     wfd \
     $(filter-out all,$(TARGET_COMMON_QTI_COMPONENTS))
 endif
 include device/qcom/common/build/target/system.mk
+include device/qcom/common/build/target/vendor.mk

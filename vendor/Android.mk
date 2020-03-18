@@ -1,4 +1,4 @@
-# Copyright 2023 Paranoid Android
+# Copyright (C) 2020 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,13 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-all_system_components := \
-    telephony \
-    wfd
+LOCAL_PATH := $(call my-dir)
 
-target_system_components := $(filter $(all_system_components),$(TARGET_COMMON_QTI_COMPONENTS))
-
-# QTI Common Components
-$(foreach component,$(target_system_components),\
-	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/system/$(component)) \
-	$(eval include device/qcom/common/system/$(component)/qti-$(component).mk))
+include $(call all-makefiles-under,$(LOCAL_PATH))
