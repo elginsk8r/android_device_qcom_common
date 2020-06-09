@@ -12,5 +12,7 @@ TARGET_USES_QCOM_MM_AUDIO := true
 # Enable color metadata
 TARGET_USES_COLOR_METADATA := true
 
+# Inherit late if components are not used
+ifeq ($(TARGET_COMMON_QTI_COMPONENTS),)
 include device/qcom/common/qcom_hardware.mk
-
+endif
