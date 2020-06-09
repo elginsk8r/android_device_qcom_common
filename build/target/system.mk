@@ -14,6 +14,7 @@
 
 all_system_components := \
 	audio \
+	display \
 	perf \
     telephony \
     wfd
