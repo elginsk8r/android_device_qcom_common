@@ -1,10 +1,10 @@
-# Copyright 2023 Paranoid Android
+# Copyright (C) 2022 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,15 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-all_system_components := \
-	audio \
-	perf \
-    telephony \
-    wfd
+# Inherit from QSSI audio makefiles.
+-include $(TOPDIR)vendor/qcom/opensource/commonsys/audio/configs/qssi/qssi.mk
+-include $(TOPDIR)vendor/qcom/opensource/commonsys/audio/configs/qssi/audio_system_product.mk
 
-target_system_components := $(filter $(all_system_components),$(TARGET_COMMON_QTI_COMPONENTS))
-
-# QTI Common Components
-$(foreach component,$(target_system_components),\
-	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/system/$(component)) \
-	$(eval include device/qcom/common/system/$(component)/qti-$(component).mk))
+# Get non-open-source specific aspects.
+$(call inherit-product-if-exists, vendor/qcom/common/system/audio/audio-vendor.mk)
