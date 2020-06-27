@@ -9,6 +9,9 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 # Allow building audio encoders
 TARGET_USES_QCOM_MM_AUDIO := true
 
+# Enable ion
+TARGET_USES_ION := true
+
 # Enable color metadata
 TARGET_USES_COLOR_METADATA := true
 
