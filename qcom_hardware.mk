@@ -144,6 +144,17 @@ endif
 
 endif
 
+# GPS
+ifneq ($(filter gps,$(TARGET_COMMON_QTI_COMPONENTS)),)
+USE_DEVICE_SPECIFIC_GPS ?= false
+else
+USE_DEVICE_SPECIFIC_GPS ?= true
+endif
+
+ifeq ($(USE_DEVICE_SPECIFIC_GPS),false)
+    PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)/gps
+endif
+
 # IPACM
 ifneq ($(USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR),true)
     ifneq ($(filter $(LEGACY_UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)

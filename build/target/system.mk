@@ -15,6 +15,7 @@
 all_system_components := \
 	audio \
 	display \
+	gps \
 	media \
 	perf \
     telephony \
