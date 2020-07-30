@@ -21,6 +21,7 @@ ifneq (,$(filter all, $(TARGET_COMMON_QTI_COMPONENTS)))
 TARGET_COMMON_QTI_COMPONENTS := \
 	audio \
 	display \
+	gps \
 	media \
 	perf \
     telephony \
@@ -29,3 +30,5 @@ TARGET_COMMON_QTI_COMPONENTS := \
 endif
 include device/qcom/common/build/target/system.mk
 include device/qcom/common/build/target/vendor.mk
+
+include device/qcom/common/qcom_hardware.mk
