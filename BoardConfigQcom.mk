@@ -42,6 +42,13 @@ QSSI_SUPPORTED_PLATFORMS := \
 
 BOARD_USES_ADRENO := true
 
+# Enable full qcom support
+ifeq ($(TARGET_FWK_SUPPORTS_FULL_VALUEADDS),true)
+    $(call soong_config_set,aosp_vs_qva,aosp_or_qva,qva)
+else
+    $(call soong_config_set,aosp_vs_qva,aosp_or_qva,aosp)
+endif
+
 # Disable thermal HAL netlink framework on UM platforms that do not support it
 ifneq ($(filter $(LEGACY_UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
     $(call soong_config_set,qti_thermal,netlink,false)
