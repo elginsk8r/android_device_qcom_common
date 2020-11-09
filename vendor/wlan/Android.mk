@@ -1,4 +1,4 @@
-# Copyright 2023 Paranoid Android
+# Copyright (C) 2020 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,25 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-all_vendor_components := \
-	adreno \
-	alarm \
-	audio \
-	charging \
-	display \
-	gps \
-	keymaster \
-	media \
-	perf \
-	qseecomd \
-	telephony \
-    usb \
-	vibrator \
-	wlan
+LOCAL_PATH := $(call my-dir)
 
-target_vendor_components := $(filter $(all_vendor_components),$(TARGET_COMMON_QTI_COMPONENTS))
+ifneq ($(filter $(LOCAL_PATH),$(PRODUCT_SOONG_NAMESPACES)),)
 
-# QTI Common Components
-$(foreach component,$(target_vendor_components),\
-	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/vendor/$(component)) \
-	$(eval include device/qcom/common/vendor/$(component)/qti-$(component).mk))
+include $(CLEAR_VARS)
+
+ifneq ($(filter msm8998 sdm660,$(TARGET_BOARD_PLATFORM)),)
+-include device/qcom/wlan/sdm660_64/AndroidBoardWlan.mk
+else ifneq ($(filter sm6150,$(TARGET_BOARD_PLATFORM)),)
+-include device/qcom/wlan/talos/AndroidBoardWlan.mk
+else
+-include device/qcom/wlan/$(TARGET_BOARD_PLATFORM)/AndroidBoardWlan.mk
+endif
+
+endif
