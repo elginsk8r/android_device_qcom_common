@@ -22,7 +22,8 @@ all_vendor_components := \
 	media \
 	perf \
 	qseecomd \
-	telephony
+	telephony \
+    usb
 
 target_vendor_components := $(filter $(all_vendor_components),$(TARGET_COMMON_QTI_COMPONENTS))
 

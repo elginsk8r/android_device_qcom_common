@@ -29,6 +29,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 	perf \
 	qseecomd \
     telephony \
+    usb \
     wfd \
     $(filter-out all,$(TARGET_COMMON_QTI_COMPONENTS))
 endif
