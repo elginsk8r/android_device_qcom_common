@@ -22,6 +22,7 @@ all_vendor_components := \
 	gps \
 	keymaster \
 	media \
+	nfc \
 	perf \
 	qseecomd \
 	telephony \

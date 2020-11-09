@@ -28,6 +28,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 	gps \
 	keymaster \
 	media \
+	nfc \
 	perf \
 	qseecomd \
     telephony \
