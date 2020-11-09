@@ -15,6 +15,7 @@
 all_vendor_components := \
 	audio \
 	display \
+	media \
 	perf \
 	telephony
 
