@@ -30,6 +30,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 	qseecomd \
     telephony \
     usb \
+	vibrator \
     wfd \
     $(filter-out all,$(TARGET_COMMON_QTI_COMPONENTS))
 endif
