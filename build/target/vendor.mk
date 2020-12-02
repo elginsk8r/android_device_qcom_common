@@ -34,3 +34,10 @@ target_vendor_components := $(filter $(all_vendor_components),$(TARGET_COMMON_QT
 $(foreach component,$(target_vendor_components),\
 	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/vendor/$(component)) \
 	$(eval include device/qcom/common/vendor/$(component)/qti-$(component).mk))
+
+# SECCOMP Extensions
+PRODUCT_COPY_FILES += \
+    device/qcom/common/vendor/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.software.ext.policy \
+    device/qcom/common/vendor/seccomp/codec2.vendor.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.ext.policy \
+    device/qcom/common/vendor/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+    device/qcom/common/vendor/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
