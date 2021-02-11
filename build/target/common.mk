@@ -19,6 +19,7 @@ include device/qcom/common/qcom_hardware.mk
 # Components
 ifneq (,$(filter all, $(TARGET_COMMON_QTI_COMPONENTS)))
 TARGET_COMMON_QTI_COMPONENTS := \
+	adreno \
 	audio \
 	display \
 	gps \
