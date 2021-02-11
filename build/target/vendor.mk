@@ -13,6 +13,7 @@
 # limitations under the License.
 
 all_vendor_components := \
+	adreno \
 	audio \
 	display \
 	gps \
