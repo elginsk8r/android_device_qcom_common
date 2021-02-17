@@ -28,3 +28,7 @@ target_system_components := $(filter $(all_system_components),$(TARGET_COMMON_QT
 $(foreach component,$(target_system_components),\
 	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/system/$(component)) \
 	$(eval include device/qcom/common/system/$(component)/qti-$(component).mk))
+
+# Public Libraries
+PRODUCT_COPY_FILES += \
+    device/qcom/common/public.libraries.system_ext-qti.txt:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/public.libraries-qti.txt
