@@ -41,6 +41,10 @@ $(foreach component,$(filter $(all_vendor_components),$(TARGET_VENDOR_QTI_COMPON
 	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/vendor/$(component)) \
 	$(eval include device/qcom/common/vendor/$(component)/qti-$(component).mk))
 
+# Compatibility matrix
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    device/qcom/common/vintf/vendor_framework_compatibility_matrix.xml
+
 # SECCOMP Extensions
 PRODUCT_COPY_FILES += \
     device/qcom/common/vendor/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.software.ext.policy \
