@@ -45,3 +45,7 @@ PRODUCT_COPY_FILES += \
 # SoC
 PRODUCT_VENDOR_PROPERTIES += \
     ro.soc.manufacturer=QTI
+
+# Vendor Service Manager
+PRODUCT_PACKAGES += \
+    vndservicemanager
