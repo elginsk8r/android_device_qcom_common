@@ -29,6 +29,14 @@ $(foreach component,$(target_system_components),\
 	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/system/$(component)) \
 	$(eval include device/qcom/common/system/$(component)/qti-$(component).mk))
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    device/qcom/common/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
+    device/qcom/common/privapp-permissions-qti-system-ext.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-qti-system-ext.xml \
+    device/qcom/common/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml \
+    device/qcom/common/qti_whitelist_system_ext.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/qti_whitelist_system_ext.xml
+
 # Public Libraries
 PRODUCT_COPY_FILES += \
+    device/qcom/common/public.libraries.product-qti.txt:$(TARGET_COPY_OUT_PRODUCT)/etc/public.libraries-qti.txt \
     device/qcom/common/public.libraries.system_ext-qti.txt:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/public.libraries-qti.txt
