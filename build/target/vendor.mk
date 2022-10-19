@@ -42,6 +42,9 @@ $(foreach component,$(filter $(all_vendor_components),$(TARGET_VENDOR_QTI_COMPON
 	$(eval include device/qcom/common/vendor/$(component)/qti-$(component).mk))
 
 # Compatibility matrix
+DEVICE_MATRIX_FILE += \
+    device/qcom/common/compatibility_matrix.xml
+
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     device/qcom/common/vintf/vendor_framework_compatibility_matrix.xml
 
