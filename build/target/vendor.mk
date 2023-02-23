@@ -18,6 +18,7 @@ all_vendor_components := \
 	charging \
 	display \
 	gps \
+	keymaster \
 	media \
 	perf \
 	telephony
