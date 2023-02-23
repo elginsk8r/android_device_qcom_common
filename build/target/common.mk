@@ -21,6 +21,7 @@ ifneq (,$(filter all, $(TARGET_COMMON_QTI_COMPONENTS)))
 TARGET_COMMON_QTI_COMPONENTS := \
 	adreno \
 	audio \
+	charging \
 	display \
 	gps \
 	media \

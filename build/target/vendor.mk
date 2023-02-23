@@ -15,6 +15,7 @@
 all_vendor_components := \
 	adreno \
 	audio \
+	charging \
 	display \
 	gps \
 	media \
