@@ -21,6 +21,7 @@ all_vendor_components := \
 	keymaster \
 	media \
 	perf \
+	qseecomd \
 	telephony
 
 target_vendor_components := $(filter $(all_vendor_components),$(TARGET_COMMON_QTI_COMPONENTS))
