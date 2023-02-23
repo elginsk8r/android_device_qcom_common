@@ -27,6 +27,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 	keymaster \
 	media \
 	perf \
+	qseecomd \
     telephony \
     wfd \
     $(filter-out all,$(TARGET_COMMON_QTI_COMPONENTS))
