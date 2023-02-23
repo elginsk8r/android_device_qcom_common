@@ -24,6 +24,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 	charging \
 	display \
 	gps \
+	keymaster \
 	media \
 	perf \
     telephony \
