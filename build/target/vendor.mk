@@ -18,6 +18,7 @@ all_vendor_components := \
 	audio \
 	charging \
 	display \
+	dsprpcd \
 	gps \
 	keymaster \
 	media \

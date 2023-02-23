@@ -24,6 +24,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 	audio \
 	charging \
 	display \
+	dsprpcd \
 	gps \
 	keymaster \
 	media \
