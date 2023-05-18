@@ -20,6 +20,7 @@ include device/qcom/common/qcom_hardware.mk
 ifneq (,$(filter all, $(TARGET_COMMON_QTI_COMPONENTS)))
 TARGET_COMMON_QTI_COMPONENTS := \
 	adreno \
+	alarm \
 	audio \
 	charging \
 	display \
