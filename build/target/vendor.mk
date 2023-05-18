@@ -14,6 +14,7 @@
 
 all_vendor_components := \
 	adreno \
+	alarm \
 	audio \
 	charging \
 	display \

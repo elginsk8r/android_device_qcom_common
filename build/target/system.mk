@@ -13,6 +13,7 @@
 # limitations under the License.
 
 all_system_components := \
+	alarm \
 	audio \
 	display \
 	gps \
