@@ -53,3 +53,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Vendor Service Manager
 PRODUCT_PACKAGES += \
     vndservicemanager
+
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libwfdaac_vendor
