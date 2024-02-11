@@ -14,6 +14,17 @@
 
 include device/qcom/common/qcom_defs.mk
 
+# Use the configs for TARGET_BOARD_PLATFORM unless otherwise specified
+ifeq ($(TARGET_BOARD_PLATFORM)$(TARGET_BOARD_SUFFIX),bengal_515)
+    TARGET_PERF_DIR := bengal_515
+else
+    TARGET_PERF_DIR := $(TARGET_BOARD_PLATFORM)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/qcom/common/vendor/perf/configs/common,$(TARGET_COPY_OUT_VENDOR)/etc) \
+    $(call find-copy-subdir-files,*,device/qcom/common/vendor/perf/configs/$(TARGET_PERF_DIR),$(TARGET_COPY_OUT_VENDOR)/etc)
+
 # Disable IOP HAL for select platforms.
 ifneq ($(filter msm8937 msm8953 msm8998 qcs605 sdm660 sdm710,$(TARGET_BOARD_PLATFORM)),)
 PRODUCT_COPY_FILES += \
