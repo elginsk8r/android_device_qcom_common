@@ -1,44 +1,6 @@
-include device/qcom/common/qcom_boards.mk
-include device/qcom/common/qcom_defs.mk
-
-UM_3_18_HAL_FAMILY := msm8996
-UM_4_4_HAL_FAMILY := msm8998
-
-ifeq (,$(TARGET_ENFORCES_QSSI))
-UM_3_18_HAL_FAMILY += msm8937 msm8953
-UM_4_4_HAL_FAMILY += sdm660
-else
-UM_4_9_LEGACY_FAMILY := msm8937 msm8953
-UM_4_19_LEGACY_FAMILY := sdm660
+ifeq ($(QCOM_HARDWARE_VARIANT),)
+include device/qcom/common/qcom_hardware.mk
 endif
-
-UM_PLATFORMS := \
-    $(UM_3_18_FAMILY) \
-    $(UM_4_4_FAMILY) \
-    $(UM_4_9_FAMILY) \
-    $(UM_4_14_FAMILY) \
-    $(UM_4_19_FAMILY) \
-    $(UM_5_4_FAMILY) \
-    $(UM_5_10_FAMILY) \
-    $(UM_5_15_FAMILY)
-
-LEGACY_UM_PLATFORMS := \
-    $(UM_3_18_FAMILY) \
-    $(UM_4_4_FAMILY) \
-    $(UM_4_9_FAMILY) \
-    $(UM_4_14_FAMILY) \
-    $(UM_4_19_FAMILY) \
-    $(UM_5_4_FAMILY)
-
-QSSI_SUPPORTED_PLATFORMS := \
-    $(UM_4_9_LEGACY_FAMILY) \
-    $(UM_4_19_LEGACY_FAMILY) \
-    $(UM_4_9_FAMILY) \
-    $(UM_4_14_FAMILY) \
-    $(UM_4_19_FAMILY) \
-    $(UM_5_4_FAMILY) \
-    $(UM_5_10_FAMILY) \
-    $(UM_5_15_FAMILY)
 
 BOARD_USES_ADRENO := true
 
