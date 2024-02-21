@@ -28,10 +28,14 @@ all_vendor_components := \
 	vibrator \
 	wlan
 
-target_vendor_components := $(filter $(all_vendor_components),$(TARGET_COMMON_QTI_COMPONENTS))
+ifneq (,$(filter all, $(TARGET_VENDOR_QTI_COMPONENTS)))
+TARGET_VENDOR_QTI_COMPONENTS := \
+	$(all_vendor_components) \
+    $(filter-out all,$(TARGET_VENDOR_QTI_COMPONENTS))
+endif
 
 # QTI Common Components
-$(foreach component,$(target_vendor_components),\
+$(foreach component,$(filter $(all_vendor_components),$(TARGET_VENDOR_QTI_COMPONENTS)),\
 	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/vendor/$(component)) \
 	$(eval include device/qcom/common/vendor/$(component)/qti-$(component).mk))
 

@@ -35,8 +35,16 @@ TARGET_COMMON_QTI_COMPONENTS := \
     wfd \
     $(filter-out all,$(TARGET_COMMON_QTI_COMPONENTS))
 endif
+
+TARGET_SYSTEM_QTI_COMPONENTS ?= $(TARGET_COMMON_QTI_COMPONENTS)
+ifneq ($(TARGET_SYSTEM_QTI_COMPONENTS),)
 include device/qcom/common/build/target/system.mk
+endif
+
+TARGET_VENDOR_QTI_COMPONENTS ?= $(TARGET_COMMON_QTI_COMPONENTS)
+ifneq ($(TARGET_VENDOR_QTI_COMPONENTS),)
 include device/qcom/common/build/target/vendor.mk
+endif
 
 include device/qcom/common/qcom_hardware.mk
 

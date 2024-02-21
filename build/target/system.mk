@@ -22,10 +22,14 @@ all_system_components := \
     telephony \
     wfd
 
-target_system_components := $(filter $(all_system_components),$(TARGET_COMMON_QTI_COMPONENTS))
+ifneq (,$(filter all, $(TARGET_SYSTEM_QTI_COMPONENTS)))
+TARGET_SYSTEM_QTI_COMPONENTS := \
+	$(all_system_components) \
+    $(filter-out all,$(TARGET_SYSTEM_QTI_COMPONENTS))
+endif
 
 # QTI Common Components
-$(foreach component,$(target_system_components),\
+$(foreach component,$(filter $(all_system_components),$(TARGET_SYSTEM_QTI_COMPONENTS)),\
 	$(eval PRODUCT_SOONG_NAMESPACES += device/qcom/common/system/$(component)) \
 	$(eval include device/qcom/common/system/$(component)/qti-$(component).mk))
 
