@@ -54,13 +54,6 @@ ifneq ($(filter $(LEGACY_UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
     $(call soong_config_set,qti_thermal,netlink,false)
 endif
 
-# Enable BT advanced audio if available
-ifneq "$(wildcard vendor/qcom/proprietary/commonsys/bt/bt_adv_audio)" ""
-    $(call soong_config_set,bredr_vs_btadva,bredr_or_btadva,btadva)
-else
-    $(call soong_config_set,bredr_vs_btadva,bredr_or_btadva,bredr)
-endif
-
 # Add qtidisplay to soong config namespaces
 SOONG_CONFIG_NAMESPACES += qtidisplay
 
